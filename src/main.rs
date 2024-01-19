@@ -15,31 +15,49 @@ fn main() {
         ("one", "1"), ("two", "2"), ("three", "3"), ("four", "4"), ("five", "5"), ("six", "6"), ("seven", "7"), ("eight", "9"), ("zero", "0")
     ];
 
-
+    let mut combo_string = String::new();
     let mut couples_num = vec![];
     for mut item1 in &collection {
+        let mut cal_str: String = item1.parse().expect("Err str in str");
         for (word, digit) in &replacements {
-            let mut cal_str: String = item1.parse().expect("Err str in str");
+
             if cal_str.contains(word) {
                 &mut cal_str.replace(word, digit);
                 //println!("{}", &item1);
             }
-            let mut combo_string = String::new();
-            let f_char = &cal_str.chars().next().expect("Err f ch");
-            let l_char = &cal_str.chars().last().expect("Err l ch");
-            combo_string = format!("{}{}", f_char, l_char);
-
-
-            if let Ok(parsed_number) = combo_string.parse::<i64>() {
-                couples_num.push(parsed_number);
-            } else {
-                println!("Ошибка: Невозможно преобразовать строку в число");
-            }
-
             //println!("{}", &combo_string.parse::<i64>().unwrap());
             //couples_num.push(combo_string).parse::<i64>().unwrap();
         }
+        let mut f_char: char;
+        for c in cal_str.chars() {
+            let first_char = c;
+            if first_char != ' '{
+                &mut f_char = first_char;
+            };
+            println!("{}", c);
+        }
+
+        let mut l_char: char;
+        for c in cal_str.len() {
+            let last_char = &cal_str.chars().rev().nth(c);
+            if last_char != ' '{
+               &mut l_char = last_char;
+            };
+            println!("{}", c);
+        }
+        /*let f_char = &cal_str.chars().next().expect("Err f ch");
+        dbg!("{}",);
+        let l_char = &cal_str.chars().last().expect("Err l ch");*/
+
+
+        combo_string = format!("{}{}", f_char, l_char);
     }
+    if let Ok(parsed_number) = combo_string.parse::<i64>() {
+        couples_num.push(parsed_number);
+    } else {
+        println!("Ошибка: Невозможно преобразовать строку в число");
+    }
+
     println!("{:?}", &couples_num);
     let mut summ:i64 = 0;
     for item in &couples_num{
