@@ -27,14 +27,25 @@ fn main() {
             let mut combo_string = String::new();
             let f_char = &cal_str.chars().next().expect("Err f ch");
             let l_char = &cal_str.chars().last().expect("Err l ch");
-            combo_string = format!("{} {}", f_char, l_char);
+            combo_string = format!("{}{}", f_char, l_char);
 
+
+            if let Ok(parsed_number) = combo_string.parse::<i64>() {
+                couples_num.push(parsed_number);
+            } else {
+                println!("Ошибка: Невозможно преобразовать строку в число");
+            }
 
             //println!("{}", &combo_string.parse::<i64>().unwrap());
-            couples_num.push(combo_string).parse::<i64>().unwrap();
+            //couples_num.push(combo_string).parse::<i64>().unwrap();
         }
     }
     println!("{:?}", &couples_num);
+    let mut summ:i64 = 0;
+    for item in &couples_num{
+        summ += item;
+    }
+    println!("{}", summ);
 }
 
 
