@@ -19,6 +19,7 @@ fn main() {
     let mut couples_num = vec![];
     for mut item1 in &collection {
         let mut cal_str: String = item1.parse().expect("Err str in str");
+        cal_str = cal_str.trim().to_string();// избавляемся от пробелов
         for (word, digit) in &replacements {
 
             if cal_str.contains(word) {
@@ -28,22 +29,31 @@ fn main() {
             //println!("{}", &combo_string.parse::<i64>().unwrap());
             //couples_num.push(combo_string).parse::<i64>().unwrap();
         }
-        let mut f_char: char;
+        let mut f_char = String::new();
         for c in cal_str.chars() {
-            let first_char = c;
+            let first_char:char = c;
             if first_char != ' '{
-                &mut f_char = first_char;
+                &mut f_char.push(first_char);
+            }else {
+                println!("Первый символ пустой")
             };
             println!("{}", c);
         }
 
-        let mut l_char: char;
-        for c in cal_str.len() {
-            let last_char = &cal_str.chars().rev().nth(c);
-            if last_char != ' '{
-               &mut l_char = last_char;
+        let mut l_char;
+        //for b in cal_str.len()
+        loop{
+            let mut char_calc = ' ';
+            let mut b: usize = 0;
+            let last_char = &cal_str.chars().rev().nth(b);
+            if last_char != char_calc {
+               &mut l_char.push(last_char);
+                break;
+            }else {
+                println!("Последний символ пустой")
             };
-            println!("{}", c);
+            b+=1;
+            println!("{}", b);
         }
         /*let f_char = &cal_str.chars().next().expect("Err f ch");
         dbg!("{}",);
