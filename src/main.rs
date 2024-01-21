@@ -50,7 +50,6 @@ fn main() {
                 println!("Новый круг")
             }
         }
-
         /*loop{
             let char_calc = ' ';
             let mut b: usize = 0;
@@ -67,28 +66,29 @@ fn main() {
             println!("{}", b);
         }*/
 
-
-
-
         /*let f_char = &cal_str.chars().next().expect("Err f ch");
         dbg!("{}",);
         let l_char = &cal_str.chars().last().expect("Err l ch");*/
 
+        &mut combo_string.push_str(&*f_char);
+        &mut combo_string.push_str(&*l_char);
+        //combo_string = format!("{}{}", f_char, l_char);
+        //dbg!("{}", &combo_string);
 
-        combo_string = format!("{}{}", f_char, l_char);
-    }
-    if let Ok(parsed_number) = combo_string.parse::<i64>() {
-        couples_num.push(parsed_number);
-    } else {
-        println!("Ошибка: Невозможно преобразовать строку в число");
+
+        if let Ok(parsed_number) = combo_string.parse::<i64>() {
+            couples_num.push(parsed_number);
+            &mut combo_string.clear();
+        } else {
+            println!("Ошибка: Невозможно преобразовать строку в число");
+        }
     }
 
-    println!("{:?}", &couples_num);
     let mut summ:i64 = 0;
     for item in &couples_num{
         summ += item;
     }
-    println!("{}", summ);
+    println!("{}", &summ);
 }
 
 
