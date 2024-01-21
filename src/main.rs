@@ -17,7 +17,7 @@ fn main() {
 
     let mut combo_string = String::new();
     let mut couples_num = vec![];
-    for mut item1 in &collection {
+    for item1 in &collection {
         let mut cal_str: String = item1.parse().expect("Err str in str");
         //cal_str = cal_str.trim().to_string();// избавляемся от пробелов
         for (word, digit) in &replacements {
@@ -47,7 +47,7 @@ fn main() {
                 &mut l_char.push(b);
                 break;
             }else {
-                println!("Новый круг")
+                println!("Пробел")
             }
         }
         /*loop{
@@ -73,7 +73,7 @@ fn main() {
         &mut combo_string.push_str(&*f_char);
         &mut combo_string.push_str(&*l_char);
         //combo_string = format!("{}{}", f_char, l_char);
-        //dbg!("{}", &combo_string);
+        dbg!("{}", &combo_string);
 
 
         if let Ok(parsed_number) = combo_string.parse::<i64>() {
