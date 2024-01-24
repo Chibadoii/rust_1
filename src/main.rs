@@ -11,7 +11,7 @@ fn main() {
     let collection = contents.split("\n").collect::<Vec<&str>>();
     // вектор вариантов подстановки
     let replacements = vec![
-        ("one", "1"), ("two", "2"), ("three", "3"), ("four", "4"), ("five", "5"), ("six", "6"), ("seven", "7"), ("eight", "9"), ("zero", "0")
+        ("one", "1"), ("two", "2"), ("three", "3"), ("four", "4"), ("five", "5"), ("six", "6"), ("seven", "7"), ("eight", "8"), ("nine", "9"), ("zero", "0")
     ];
 
     let mut combo_string = String::new();
@@ -46,11 +46,15 @@ fn main() {
         }
     }
 
+    for (index, value) in collection.iter().enumerate() {
+        print!("  --{}--{}",&index, value);
+        println!("{}", &couples_num[index])
+    }
     let mut summ:i64 = 0;
     for itm in &couples_num{
         summ += itm;
     }
-    println!("{}", &summ);
+    //println!("{}", &summ);
     }
 
 
