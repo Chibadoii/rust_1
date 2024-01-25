@@ -51,14 +51,12 @@ fn main() {
 
         println!("{}, {}, {}", index, &couples_num[index], value)
     }
-
     let mut summ:i64 = 0;
     for itm in &couples_num{
         summ += itm;
     }
     //println!("{}", &summ);
     }
-
 
 
 
