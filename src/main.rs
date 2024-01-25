@@ -48,6 +48,7 @@ fn main() {
 
     for (index, value) in collection.iter().enumerate() {
         //println!("Str {}  —  {}  — {}", index, value, &couples_num[index]);
+
         println!("{}, {}, {}", index, &couples_num[index], value)
     }
 
