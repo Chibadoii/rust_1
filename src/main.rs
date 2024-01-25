@@ -47,15 +47,17 @@ fn main() {
     }
 
     for (index, value) in collection.iter().enumerate() {
-        print!("  --{}--{}",&index, value);
-        println!("{}", &couples_num[index])
+        //println!("Str {}  —  {}  — {}", index, value, &couples_num[index]);
+        println!("{}, {}, {}", index, &couples_num[index], value)
     }
+
     let mut summ:i64 = 0;
     for itm in &couples_num{
         summ += itm;
     }
     //println!("{}", &summ);
     }
+
 
 
 
