@@ -18,15 +18,24 @@ fn main() {
     let mut couples_num = vec![];
     for item1 in &collection {
         let mut cal_str: String = item1.parse().expect("Err str in str");
-        for (word, digit) in &replacements {
-            if cal_str.contains(word) {
-                cal_str = cal_str.replace(word, digit).to_string().clone();//Переводим слова в числа
-                //println!("{}", &cal_str);
+        let mut rev_call_str = cal_str.chars().rev().collect::<Vec<_>>();
+        let mut rev_call_str_str = cal_str.chars().rev().collect::<String>();
+        let mut str_for_push = String::new();
+        for i in &rev_call_str{
+            str_for_push.push(*i);
+            for (word, digit) in &replacements {
+                let rev_word = word.chars().rev().collect::<String>();
+
+                if str_for_push.contains(&rev_word) {
+                    rev_call_str_str = rev_call_str_str.replace(&rev_word, digit).to_string().clone();//Переводим слова в числа
+                    //println!("{:?}", &rev_call_str);
+                }
             }
-
         }
+        rev_call_str_str = rev_call_str_str.chars().rev().collect::<String>();
 
-        let num_char:String = cal_str.chars().filter(|c| c.is_digit(10)).collect();//Выбираем числа
+
+        let num_char:String = rev_call_str_str.chars().filter(|c| c.is_digit(10)).collect();//Выбираем числа
 
         let f_char = &num_char.chars().next().expect("Err f ch");
         //dbg!("{}", f_char);
@@ -55,8 +64,9 @@ fn main() {
     for itm in &couples_num{
         summ += itm;
     }
-    //println!("{}", &summ);
+    println!("{}", &summ);
     }
+
 
 
 
