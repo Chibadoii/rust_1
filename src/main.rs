@@ -56,17 +56,18 @@ fn main() {
     }
 
     for (index, value) in collection.iter().enumerate() {
-        //println!("Str {}  —  {}  — {}", index, value, &couples_num[index]);
-
-        println!("{}, {}, {}", index, &couples_num[index], value)
+        print!("  --{}--{}",&index, value);
+        println!("{}", &couples_num[index])
     }
+    //  for (index, value) in collection.iter().enumerate() {// такой вариант выглядит лучше, но в выводе одни числа накладываются на другие
+    //     println!("Str {}  —  {}  — {}", index, value, &couples_num[index]);
+    // }
     let mut summ:i64 = 0;
     for itm in &couples_num{
         summ += itm;
     }
-    println!("{}", &summ);
+    //println!("{}", &summ);
     }
-
 
 
 
