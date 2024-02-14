@@ -53,6 +53,7 @@ fn main() {
         } else {
             println!("Err to str");
         }
+
     }
 
     for (index, value) in collection.iter().enumerate() {
